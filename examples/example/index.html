@@ -18,13 +18,53 @@
         </ul>
       </menu>
     </header>
-    <button class="lighting-element">button</button>
-    <div class="box-list">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
+    <main class="demo">
+      <section>
+        <h2>button</h2>
+        <button class="lighting-element">click me</button>
+      </section>
+
+      <section>
+        <h2>div / card</h2>
+        <div class="lighting-element card">
+          <h3>Card title</h3>
+          <p>A plain div with some text content. Click anywhere inside.</p>
+        </div>
+      </section>
+
+      <section>
+        <h2>anchor</h2>
+        <a href="#" class="lighting-element link" onclick="event.preventDefault()">
+          a link styled as a pill
+        </a>
+      </section>
+
+      <section>
+        <h2>image</h2>
+        <img
+          class="lighting-element"
+          src="https://placehold.co/300x200/222/fff?text=image"
+          alt="image"
+        />
+      </section>
+
+      <section>
+        <h2>inline span</h2>
+        <p>
+          some prose with an
+          <span class="lighting-element badge">inline badge</span>
+          inside a paragraph.
+        </p>
+      </section>
+
+      <section>
+        <h2>panel (large)</h2>
+        <div class="lighting-element panel">
+          <strong>Panel</strong>
+          <p>Click anywhere — lightning radiates from the click point.</p>
+        </div>
+      </section>
+    </main>
 
     <footer>
       <div>footer item</div>

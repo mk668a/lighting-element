@@ -7,13 +7,7 @@ const createLightningElement = () => {
 
   for (const element of electroStream) {
     element.addEventListener('click', function (e: MouseEvent) {
-      const x = e.clientX
-      const y = e.clientY
-
-      lightning(element, x, y)
-
-      element.style.setProperty('--before-top', `${y}px`)
-      element.style.setProperty('--before-left', `${x}px`)
+      lightning(element, e.clientX, e.clientY)
     })
   }
 }

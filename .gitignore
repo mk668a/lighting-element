@@ -25,3 +25,6 @@ Thumbs.db
 package-lock.json
 yarn.lock
 pnpm-lock.yaml
+
+# playwright mcp scratch output
+.playwright-mcp
