@@ -17,7 +17,7 @@ export function lightning(element: HTMLElement, x: number, y: number) {
   parentNode!.insertBefore(div, element.nextSibling)
 
   // create new canvas element
-  const canvasElem: any = document.createElement('canvas')
+  const canvasElem = document.createElement('canvas')
   // if element position is not absolute, set div position to relative
   div.style.position = element.style.position
   if (div.style.position !== 'absolute') {
@@ -41,14 +41,13 @@ export function lightning(element: HTMLElement, x: number, y: number) {
   element.style.top = '0'
   element.style.left = '0'
 
-  // declare a variable for 2D drawing context
-  let ctx: any
-
   // set canvas width and height
   canvasElem.width = w
   canvasElem.height = h
   // get 2D drawing context of canvas
-  ctx = canvasElem.getContext('2d')
+  const rawCtx = canvasElem.getContext('2d')
+  if (!rawCtx) return
+  const ctx = rawCtx
 
   // set center of lightning
   const rect = element.getBoundingClientRect()
@@ -75,10 +74,11 @@ export function lightning(element: HTMLElement, x: number, y: number) {
   // ctx.fillRect(0, 0, w, h);
 
   // define a function to create lightning path
-  function createLightning() {
+  type Point = { x: number; y: number }
+  function createLightning(): Point[] {
     let segmentHeight = groundHeight - center.y
 
-    let lightning = []
+    let lightning: Point[] = []
 
     lightning.push({
       x: center.x,
@@ -94,14 +94,14 @@ export function lightning(element: HTMLElement, x: number, y: number) {
 
     // if current segment height is greater than minSegmentHeight, create new segments
     while (segmentHeight > minSegmentHeight) {
-      const newSegments = []
+      const newSegments: Point[] = []
 
       // insert new points between points of previous segment
       for (let i = 0; i < lightning.length - 1; i++) {
-        const start: any = lightning[i]
-        const end: any = lightning[i + 1]
-        const midX: number = (start.x + end.x) / 2
-        const newX: number = midX + (Math.random() * 2 - 1) * currDiff
+        const start = lightning[i]
+        const end = lightning[i + 1]
+        const midX = (start.x + end.x) / 2
+        const newX = midX + (Math.random() * 2 - 1) * currDiff
 
         newSegments.push(start, {
           x: newX,
@@ -109,7 +109,8 @@ export function lightning(element: HTMLElement, x: number, y: number) {
         })
       }
 
-      newSegments.push(lightning.pop())
+      const last = lightning.pop()
+      if (last) newSegments.push(last)
       lightning = newSegments
 
       currDiff /= roughness

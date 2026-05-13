@@ -1,8 +1,9 @@
 import { defineConfig } from 'vite'
 import ts from '@rollup/plugin-typescript'
-import path from 'path'
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
 
-const __dirname = path.resolve(path.dirname(''))
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 export default defineConfig({
   plugins: [
@@ -11,6 +12,7 @@ export default defineConfig({
     })
   ],
   build: {
+    sourcemap: true,
     lib: {
       entry: path.resolve(__dirname, 'src/index.ts'),
       name: 'lighting-element',

@@ -1,12 +1,10 @@
-import react from '@vitejs/plugin-react'
-import { UserConfig, defineConfig } from 'vite'
+import { defineConfig } from 'vite'
 import path from 'node:path'
 
 export default defineConfig({
-  plugins: [react()],
   resolve: {
     alias: {
       'lighting-element': path.resolve(__dirname, '../../packages/lighting-element/src/index.ts')
     }
   }
-} as UserConfig)
+})

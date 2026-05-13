@@ -6,7 +6,7 @@ const createLightningElement = () => {
     document.querySelectorAll('.lighting-element')
 
   for (const element of electroStream) {
-    element.addEventListener('click', function (e: any) {
+    element.addEventListener('click', function (e: MouseEvent) {
       const x = e.clientX
       const y = e.clientY
 

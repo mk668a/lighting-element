@@ -1,23 +1,29 @@
 {
   "name": "lighting-element-central",
-  "description": "",
-  "author": "",
-  "license": "",
+  "description": "Workspace root for lighting-element",
+  "author": "mk668a",
+  "license": "MIT",
   "private": true,
   "scripts": {
-    "eslint": "eslint **/*.{js,ts}",
-    "eslint:fix": "eslint --fix **/*.{js,ts}",
+    "eslint": "eslint \"packages/**/src/**/*.{js,ts}\" \"examples/**/src/**/*.{js,ts}\"",
+    "eslint:fix": "bun run eslint --fix",
     "stylelint": "stylelint --config .stylelintrc.cjs \"**/*.css\" --fix",
     "format": "prettier --write",
-    "reset": "rm -rf node_modules yarn.lock package-lock.json */**/node_modules && yarn cache clean && npm cache clean -f"
+    "reset": "rm -rf node_modules bun.lock */**/node_modules && bun pm cache rm"
   },
   "devDependencies": {
-    "eslint": "^8.50.0",
-    "prettier": "^3.0.3",
-    "stylelint": "^15.10.3",
-    "stylelint-prettier": "^4.0.2",
-    "typescript": "^5.0.2",
-    "vite": "^4.3.9"
+    "@eslint/js": "^10.0.1",
+    "@typescript-eslint/eslint-plugin": "^8.59.3",
+    "@typescript-eslint/parser": "^8.59.3",
+    "eslint": "^10.3.0",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-unused-imports": "^4.4.1",
+    "globals": "^17.6.0",
+    "prettier": "^3.8.3",
+    "stylelint": "^17.11.0",
+    "stylelint-prettier": "^5.0.3",
+    "typescript": "^6.0.3",
+    "vite": "^8.0.12"
   },
   "workspaces": [
     "packages/*",
