@@ -2,6 +2,8 @@
 
 Click-triggered lightning canvas effect for any DOM element.
 
+![demo](docs/demo.gif)
+
 ## Repository layout
 
 This is a bun workspaces monorepo.
